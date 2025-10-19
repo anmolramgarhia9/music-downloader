@@ -12,17 +12,14 @@ RUN apk add --no-cache \
 # Create app directory
 WORKDIR /app
 
-# Copy package files
+# Copy package files first for better Docker layer caching
 COPY package*.json ./
-COPY shared ./shared
 
-# Install dependencies
-RUN npm ci --only=production
+# Install ALL dependencies (including dev deps for build)
+RUN npm install
 
-# Copy application code
-COPY server ./server
-COPY client ./client
-COPY *.json *.js ./
+# Copy source code
+COPY . .
 
 # Build the client
 RUN npm run build
