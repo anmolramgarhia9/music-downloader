@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["python3", "ffmpeg"]
+aptPkgs = ["python3", "python3-pip", "ffmpeg"]
 
 [phases.install]
 cmds = [
