@@ -12,10 +12,10 @@ pip3 install yt-dlp
 
 # Install Node.js dependencies (including dev dependencies for build)
 echo "📦 Installing npm dependencies..."
-npm ci
+npm install
 
-# Build the client
+# Build the client using npx to ensure vite is found
 echo "🏗️ Building client..."
-npm run build
+npx vite build
 
 echo "✅ Build completed successfully!"
