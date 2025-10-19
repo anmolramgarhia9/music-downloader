@@ -117,4 +117,55 @@
     overflow-x: auto;
     white-space: pre;
   }
+
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    /* Improve touch targets */
+    button {
+      min-height: 44px;
+    }
+    
+    input, select, textarea {
+      min-height: 44px;
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Better text readability */
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+    /* Optimize scrolling */
+    .max-h-96 {
+      max-height: 50vh;
+    }
+    
+    /* Better spacing for small screens */
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  
+  /* iPhone SE specific (375px and smaller) */
+  @media (max-width: 375px) {
+    .text-3xl {
+      font-size: 1.5rem;
+    }
+    
+    .text-2xl {
+      font-size: 1.25rem;
+    }
+    
+    /* Reduce padding on very small screens */
+    .p-4 {
+      padding: 0.75rem;
+    }
+    
+    .px-6 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
 }

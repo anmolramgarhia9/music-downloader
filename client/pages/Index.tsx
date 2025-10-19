@@ -172,47 +172,45 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="container max-w-7xl py-6 md:py-12">
+      <div className="container max-w-7xl py-4 md:py-6 lg:py-12 px-4">
         {/* Header */}
-        <header className="text-center mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <div className="flex items-center gap-3">
-              <div className="p-3 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl shadow-lg">
-                <Youtube className="h-8 w-8 text-white" />
-              </div>
-              <div className="text-left">
-                <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                  YouTube Downloader
-                </h1>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Search, preview, and download YouTube videos instantly
-                </p>
-              </div>
+        <header className="text-center mb-6 md:mb-12 relative">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
+            <div className="p-2 md:p-3 bg-gradient-to-br from-red-500 to-red-600 rounded-xl md:rounded-2xl shadow-lg">
+              <Youtube className="h-6 w-6 md:h-8 md:w-8 text-white" />
+            </div>
+            <div className="text-center sm:text-left">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                YouTube Downloader
+              </h1>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                Search, preview, and download YouTube videos instantly
+              </p>
             </div>
           </div>
-          <div className="absolute top-6 right-6">
+          <div className="absolute top-0 right-0">
             <ThemeToggle />
           </div>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {/* Left Side - Search */}
-          <div className="space-y-6">
-            <Card className="border-0 shadow-xl bg-card/50 backdrop-blur-sm">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Search className="h-5 w-5 text-primary" />
+          <div className="space-y-4 md:space-y-6">
+            <Card className="border-0 shadow-lg md:shadow-xl bg-card/50 backdrop-blur-sm">
+              <CardHeader className="pb-3 md:pb-4 px-4 md:px-6">
+                <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
+                  <Search className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                   Search & Download
                 </CardTitle>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs md:text-sm text-muted-foreground">
                   Find any video or song on YouTube and download it instantly
                 </p>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-2 p-3 bg-muted/30 rounded-lg">
-                  <span className="text-sm font-medium text-muted-foreground">Format:</span>
+              <CardContent className="space-y-4 px-4 md:px-6">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-2 p-3 bg-muted/30 rounded-lg">
+                  <span className="text-sm font-medium text-muted-foreground min-w-fit">Format:</span>
                   <Select value={format} onValueChange={(v) => setFormat(v as SimpleDownloadFormat)}>
-                    <SelectTrigger className="w-28 h-8 border-0 bg-background/80">
+                    <SelectTrigger className="w-full sm:w-28 h-10 md:h-8 border-0 bg-background/80">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -226,9 +224,9 @@ export default function Index() {
                   
                   {format === "audio" && (
                     <>
-                      <span className="text-sm font-medium text-muted-foreground">Quality:</span>
+                      <span className="text-sm font-medium text-muted-foreground min-w-fit">Quality:</span>
                       <Select value={audioQuality} onValueChange={(v) => setAudioQuality(v as DownloadFormat)}>
-                        <SelectTrigger className="w-44 h-8 border-0 bg-background/80">
+                        <SelectTrigger className="w-full sm:w-44 h-10 md:h-8 border-0 bg-background/80">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -244,9 +242,9 @@ export default function Index() {
                   
                   {format === "video" && (
                     <>
-                      <span className="text-sm font-medium text-muted-foreground">Quality:</span>
+                      <span className="text-sm font-medium text-muted-foreground min-w-fit">Quality:</span>
                       <Select value={videoQuality} onValueChange={(v) => setVideoQuality(v as VideoQuality)}>
-                        <SelectTrigger className="w-44 h-8 border-0 bg-background/80">
+                        <SelectTrigger className="w-full sm:w-44 h-10 md:h-8 border-0 bg-background/80">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -269,18 +267,18 @@ export default function Index() {
           </div>
 
           {/* Right Side - URL Paste & Playlist */}
-          <div className="space-y-6">
-            <Card className="border-0 shadow-xl bg-card/50 backdrop-blur-sm">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Globe className="h-5 w-5 text-primary" />
+          <div className="space-y-4 md:space-y-6">
+            <Card className="border-0 shadow-lg md:shadow-xl bg-card/50 backdrop-blur-sm">
+              <CardHeader className="pb-3 md:pb-4 px-4 md:px-6">
+                <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
+                  <Globe className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                   Paste URL
                 </CardTitle>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs md:text-sm text-muted-foreground">
                   Have a YouTube URL? Paste it here for direct download
                 </p>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 px-4 md:px-6">
                 <div className="space-y-3">
                   <Input
                     placeholder="https://youtube.com/watch?v=... or playlist URL"
@@ -293,12 +291,12 @@ export default function Index() {
                     className="h-12 text-base border-2 focus:border-primary/50"
                   />
                   
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <Select value={format} onValueChange={(v) => setFormat(v as SimpleDownloadFormat)}>
-                        <SelectTrigger className="w-32 h-10">
-                          <SelectValue />
-                        </SelectTrigger>
+                    <div className="space-y-3">
+                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <Select value={format} onValueChange={(v) => setFormat(v as SimpleDownloadFormat)}>
+                          <SelectTrigger className="w-full sm:w-32 h-12 sm:h-10">
+                            <SelectValue />
+                          </SelectTrigger>
                         <SelectContent>
                           {simpleFormats.map((f) => (
                             <SelectItem key={f.value} value={f.value}>
@@ -308,11 +306,11 @@ export default function Index() {
                         </SelectContent>
                       </Select>
                       
-                      {format === "audio" && (
-                        <Select value={audioQuality} onValueChange={(v) => setAudioQuality(v as DownloadFormat)}>
-                          <SelectTrigger className="flex-1 h-10">
-                            <SelectValue />
-                          </SelectTrigger>
+                        {format === "audio" && (
+                          <Select value={audioQuality} onValueChange={(v) => setAudioQuality(v as DownloadFormat)}>
+                            <SelectTrigger className="flex-1 h-12 sm:h-10">
+                              <SelectValue />
+                            </SelectTrigger>
                           <SelectContent>
                             {Object.entries(QUALITY_OPTIONS).map(([key, option]) => (
                               <SelectItem key={key} value={key}>
@@ -323,11 +321,11 @@ export default function Index() {
                         </Select>
                       )}
                       
-                      {format === "video" && (
-                        <Select value={videoQuality} onValueChange={(v) => setVideoQuality(v as VideoQuality)}>
-                          <SelectTrigger className="flex-1 h-10">
-                            <SelectValue />
-                          </SelectTrigger>
+                        {format === "video" && (
+                          <Select value={videoQuality} onValueChange={(v) => setVideoQuality(v as VideoQuality)}>
+                            <SelectTrigger className="flex-1 h-12 sm:h-10">
+                              <SelectValue />
+                            </SelectTrigger>
                           <SelectContent>
                             {Object.entries(VIDEO_QUALITY_OPTIONS).map(([key, option]) => (
                               <SelectItem key={key} value={key}>
@@ -339,11 +337,11 @@ export default function Index() {
                       )}
                     </div>
                     
-                    <div className="flex items-center justify-end">
+                    <div className="flex items-center justify-center sm:justify-end">
                       <Button
                       onClick={onDownload}
                       disabled={loading || playlistLoading || !url.trim()}
-                      className="px-8 h-10 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
+                      className="w-full sm:w-auto px-8 h-12 sm:h-10 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-base sm:text-sm"
                     >
                       {loading ? (
                         <div className="flex items-center gap-2">

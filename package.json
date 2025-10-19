@@ -5,21 +5,14 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "pkg": {
-    "assets": [
-      "dist/spa/*"
-    ],
-    "scripts": [
-      "dist/server/**/*.js"
-    ]
-  },
+
   "scripts": {
     "dev": "vite",
     "build": "npm run build:client && npm run build:server",
     "build:client": "npx vite build",
     "build:server": "vite build --config vite.config.server.ts",
-    "start": "node dist/server/production.mjs",
-    "render-build": "chmod +x render-build.sh && ./render-build.sh",
+    "start": "node dist/server/node-build.mjs",
+
     "test": "vitest --run",
     "format.fix": "prettier --write .",
     "typecheck": "tsc"
@@ -90,6 +83,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.539.0",
     "next-themes": "^0.4.6",
+
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "react": "^18.3.1",

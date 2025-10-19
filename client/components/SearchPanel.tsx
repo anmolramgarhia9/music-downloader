@@ -67,7 +67,7 @@ export function SearchPanel({ onSelectVideo, onDirectDownload, className }: Sear
   return (
     <div className={className}>
       <div className="space-y-4">
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
@@ -75,13 +75,13 @@ export function SearchPanel({ onSelectVideo, onDirectDownload, className }: Sear
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyPress={handleKeyPress}
-              className="pl-10 h-12"
+              className="pl-10 h-12 text-base"
             />
           </div>
           <Button 
             onClick={handleSearch} 
             disabled={searching || !searchQuery.trim()}
-            className="h-12 px-6"
+            className="w-full sm:w-auto h-12 px-6"
           >
             {searching ? (
               <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
@@ -98,19 +98,19 @@ export function SearchPanel({ onSelectVideo, onDirectDownload, className }: Sear
             </p>
             {results.map((result) => (
               <Card key={result.id} className="hover:shadow-md transition-shadow">
-                <CardContent className="p-4">
-                  <div className="flex gap-4">
+                <CardContent className="p-3 md:p-4">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     {result.thumbnail && (
                       <img 
                         src={result.thumbnail} 
                         alt={result.title}
-                        className="w-20 h-15 object-cover rounded flex-shrink-0"
+                        className="w-full sm:w-20 h-32 sm:h-15 object-cover rounded flex-shrink-0"
                         loading="lazy"
                       />
                     )}
                     
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-sm line-clamp-2 leading-tight mb-2">
+                      <h3 className="font-medium text-sm sm:text-sm line-clamp-2 leading-tight mb-2">
                         {result.title}
                       </h3>
                       
@@ -136,33 +136,33 @@ export function SearchPanel({ onSelectVideo, onDirectDownload, className }: Sear
                         )}
                       </div>
                       
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap gap-2">
                         {onDirectDownload && (
                           <Button
                             size="sm"
-                            className="h-8 text-xs bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90"
+                            className="flex-1 sm:flex-none h-10 sm:h-8 text-sm sm:text-xs bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90"
                             onClick={() => onDirectDownload(result.url, result.title)}
                           >
-                            <Download className="h-3 w-3 mr-1" />
+                            <Download className="h-4 w-4 sm:h-3 sm:w-3 mr-1" />
                             Download
                           </Button>
                         )}
                         <Button
                           size="sm"
                           variant="outline"
-                          className="h-8 text-xs"
+                          className="flex-1 sm:flex-none h-10 sm:h-8 text-sm sm:text-xs"
                           onClick={() => onSelectVideo(result.url, result.title)}
                         >
-                          <Globe className="h-3 w-3 mr-1" />
+                          <Globe className="h-4 w-4 sm:h-3 sm:w-3 mr-1" />
                           Add URL
                         </Button>
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="h-8 text-xs"
+                          className="flex-1 sm:flex-none h-10 sm:h-8 text-sm sm:text-xs"
                           onClick={() => window.open(result.url, '_blank')}
                         >
-                          <Play className="h-3 w-3 mr-1" />
+                          <Play className="h-4 w-4 sm:h-3 sm:w-3 mr-1" />
                           Watch
                         </Button>
                       </div>
