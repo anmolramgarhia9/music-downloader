@@ -1,10 +1,16 @@
+# Railway Nixpacks configuration for Node + yt-dlp + ffmpeg
 [phases.setup]
+# Prefer Nix packages when available
+nixPkgs = ["ffmpeg", "yt-dlp", "python3"]
+# Fallback for environments that support apt (ignored on Nix)
 aptPkgs = ["python3", "python3-pip", "ffmpeg"]
 
 [phases.install]
+# Install Node deps (dev deps needed for Vite/ts build)
 cmds = [
-  "pip3 install yt-dlp",
-  "npm ci"
+  "npm install",
+  # Try to upgrade yt-dlp via pip if available; ignore if pip3 isn't present
+  "pip3 install -U yt-dlp || true"
 ]
 
 [phases.build]
