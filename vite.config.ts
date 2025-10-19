@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "localhost",
     port: 8080,
+    allowedHosts: ["susannah-unspewed-danyelle.ngrok-free.dev"],
     fs: {
       allow: ["./client", "./shared", "./index.html"],
       deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**"],
