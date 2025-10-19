@@ -10,16 +10,12 @@ apt-get install -y python3 python3-pip ffmpeg
 echo "📺 Installing yt-dlp..."
 pip3 install yt-dlp
 
-# Install Node.js dependencies
+# Install Node.js dependencies (including dev dependencies for build)
 echo "📦 Installing npm dependencies..."
-npm ci --production
+npm ci
 
 # Build the client
 echo "🏗️ Building client..."
-npm run build:client
-
-# Build the server
-echo "🏗️ Building server..."
-npm run build:server
+npm run build
 
 echo "✅ Build completed successfully!"
