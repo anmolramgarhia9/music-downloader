@@ -16,6 +16,7 @@
     "build:client": "vite build",
     "build:server": "vite build --config vite.config.server.ts",
     "start": "node dist/server/node-build.mjs",
+    "render-build": "chmod +x render-build.sh && ./render-build.sh",
     "test": "vitest --run",
     "format.fix": "prettier --write .",
     "typecheck": "tsc"
