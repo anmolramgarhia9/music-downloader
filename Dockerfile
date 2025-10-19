@@ -1,13 +1,17 @@
 # Use Node.js Alpine for smaller image
 FROM node:18-alpine
 
-# Install system dependencies for yt-dlp and ffmpeg
+# Install system dependencies
 RUN apk add --no-cache \
     python3 \
     py3-pip \
     ffmpeg \
-    curl \
-    && pip3 install yt-dlp
+    curl
+
+# Create virtual environment and install yt-dlp
+RUN python3 -m venv /opt/venv \
+    && /opt/venv/bin/pip install yt-dlp \
+    && ln -s /opt/venv/bin/yt-dlp /usr/local/bin/yt-dlp
 
 # Create app directory
 WORKDIR /app
